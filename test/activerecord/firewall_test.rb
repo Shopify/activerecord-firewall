@@ -1,7 +1,7 @@
 require 'test_helper'
 
 class Activerecord::Firewall::Test < ActiveSupport::TestCase
-  test "truth" do
-    assert_kind_of Module, Activerecord::Firewall
+  test "User 1 can access user 2's blog posts" do
+    
   end
 end
