@@ -24,8 +24,8 @@ module ActiveRecord
       current = ActiveSupport::CurrentAttributes.subclasses.first.send(@protected_type)
       humanized_protected_type = @protected_type.to_s.humanize
       if current&.id && id && current.id != id
-        message = <<~END.gsub("\n", "")
-        #{@model || 'Record'} from #{humanized_protected_type} 
+        message = <<~END.gsub("\n", " ")
+        #{@model || 'Record'} from #{humanized_protected_type}
         #{id} was accessed from #{humanized_protected_type} #{current&.id}
         END
 
