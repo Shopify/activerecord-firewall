@@ -1,0 +1,23 @@
+name: activerecord-firewall
+
+type: ruby
+
+up:
+  - homebrew:
+    - openssl
+    # - another_package
+  - ruby: 2.4.2
+  - bundler
+
+commands:
+  console:
+    desc:   'start a console'
+    run:    test/dummy/bin/rails console
+  run:
+    desc:   'start the application'
+    run:    test/dummy/bin/rails server
+  test:
+    syntax:
+      argument: file
+      optional: args...
+    run: bin/testunit
