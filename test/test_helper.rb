@@ -8,7 +8,14 @@ require "rails/test_help"
 # to be shown.
 Minitest.backtrace_filter = Minitest::BacktraceFilter.new
 
-Rails::TestUnitReporter.executable = 'bin/test'
+# Rails::TestUnitReporter.executable = 'bin/test'
+
+class ActiveSupport::TestCase
+  # Setup all fixtures in test/fixtures/*.yml for all tests in alphabetical order.
+  fixtures :all
+
+  # Add more helper methods to be used by all tests here...
+end
 
 # Load fixtures from the engine
 if ActiveSupport::TestCase.respond_to?(:fixture_path=)
