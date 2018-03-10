@@ -1,11 +1,11 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  user: one
-  title: MyString
-  description: MyString
+goodbobs_post:
+  user: goodbob
+  title: Private info for Good Bob
+  description: Something private
 
-two:
-  user: two
-  title: MyString
-  description: MyString
+evilbobs_post:
+  user: evilbob
+  title: Evil bob's blog post
+  description: Something evil

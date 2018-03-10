@@ -4,7 +4,6 @@ require 'rails/all'
 
 Bundler.require(*Rails.groups)
 require "activerecord/firewall"
-require "activesupport/current_attributes"
 
 module Dummy
   class Application < Rails::Application
