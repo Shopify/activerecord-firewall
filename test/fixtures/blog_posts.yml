@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+goodbobs_post:
+  user: goodbob
+  title: Private info for Good Bob
+  description: Something private
+
+evilbobs_post:
+  user: evilbob
+  title: Evil bob's blog post
+  description: Something evil

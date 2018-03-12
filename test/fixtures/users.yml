@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+goodbob:
+  name: goodbob
+  description: Bob the good guy
+
+evilbob:
+  name: evilbob
+  description: Bob the hacker

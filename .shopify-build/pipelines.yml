@@ -1,0 +1,16 @@
+containers:
+  ci-container:
+    docker: registry.hub.docker.com/library/ruby:2.3.5
+
+pipelines:
+  activerecord-firewall:
+    steps:
+      - build: ci-container
+      - wait
+      - run:
+          - bundle check || bundle install
+          - bin/test
+        label: Run unit and integration tests
+        container: ci-container
+        cache:
+          - /usr/local/bundle
