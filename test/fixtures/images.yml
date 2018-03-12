@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+goodbobs_image:
+  alt: This is alt text for good bob's image
+  url: https://example.com/goodbob.png
+  user: goodbob
+
+evilbobs_image:
+  alt: This is alt text for evil bob's image
+  url: https://example.com/evilbob.png
+  user: evilbob

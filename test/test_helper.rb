@@ -14,7 +14,36 @@ class ActiveSupport::TestCase
   # Setup all fixtures in test/fixtures/*.yml for all tests in alphabetical order.
   fixtures :all
 
+  def assert_logged(message)
+    old_logger = Rails.logger
+    log = StringIO.new
+    Rails.logger = Logger.new(log)
+
+    begin
+      yield
+
+      log.rewind
+      assert_match message, log.read
+    ensure
+      Rails.logger = old_logger
+    end
+  end
+
   # Add more helper methods to be used by all tests here...
+  def assert_not_logged(message)
+    old_logger = Rails.logger
+    log = StringIO.new
+    Rails.logger = Logger.new(log)
+
+    begin
+      yield
+
+      log.rewind
+      assert_no_match message, log.read
+    ensure
+      Rails.logger = old_logger
+    end
+  end
 end
 
 # Load fixtures from the engine
