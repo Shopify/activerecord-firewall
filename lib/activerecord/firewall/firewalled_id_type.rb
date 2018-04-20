@@ -1,5 +1,5 @@
 module ActiveRecord
-  class FirewalledIDType < ActiveRecord::Type::Integer
+  class FirewalledIDType < ActiveRecord::Type::BigInteger
     class FirewalledAccess < ActiveRecord::RecordNotFound; end
 
     def initialize(model, protected_type)
