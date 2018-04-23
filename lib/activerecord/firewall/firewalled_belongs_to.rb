@@ -8,7 +8,8 @@ module ActiveRecord
 
       belongs_to foreign_key_type
 
-      attribute key_column_name, FirewalledIDType.new(self, foreign_key_type)
+      attribute key_column_name,
+        FirewalledIDType.new(self, foreign_key_type, ActiveRecord::Firewall.current_name.constantize)
 
       after_find do |record|
         # This explicitly loads the foreign key and
