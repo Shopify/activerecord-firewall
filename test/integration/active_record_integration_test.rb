@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class BlogPostTest < ActiveSupport::TestCase
+class ActiveRecordIntegrationTest < ActiveSupport::TestCase
   setup do
     @goodbob = users(:goodbob)
     @evilbob = users(:evilbob)
