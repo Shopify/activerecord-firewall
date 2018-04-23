@@ -15,7 +15,9 @@ module ActiveRecord
       end
     end
 
-    def serialize(*)
+    private
+
+    def cast_value(*)
       super.tap do |id|
         check_attribute!(id)
       end
@@ -24,10 +26,11 @@ module ActiveRecord
     def check_attribute!(id)
       current = @source.public_send(@protected_type)
       humanized_protected_type = @protected_type.to_s.humanize
-      if current&.id && id && current.id != id
+      current_id = current&.id
+      if current_id && id && current_id != id
         message = <<~END.gsub("\n", " ")
         #{@model || 'Record'} from #{humanized_protected_type}
-        #{id} was accessed from #{humanized_protected_type} #{current&.id}
+        #{id} was accessed from #{humanized_protected_type} #{current_id}
         END
 
         raise FirewalledAccess, message
