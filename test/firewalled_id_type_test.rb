@@ -30,6 +30,36 @@ class FirewalledIdTypeTest < ActiveSupport::TestCase
     assert_equal 9999999999999999999999999999999, type.serialize(9999999999999999999999999999999)
   end
 
+  test "raise on serialize when the current type is not the same as the value" do
+    context = mock_current_shop_id(1)
+
+    type = ActiveRecord::FirewalledIDType.new("Blog", "shop", context)
+
+    assert_raise ActiveRecord::FirewalledIDType::FirewalledAccess do
+      type.serialize(2)
+    end
+  end
+
+  test "raise on cast when the current type is not the same as the value" do
+    context = mock_current_shop_id(1)
+
+    type = ActiveRecord::FirewalledIDType.new("Blog", "shop", context)
+
+    assert_raise ActiveRecord::FirewalledIDType::FirewalledAccess do
+      type.cast(2)
+    end
+  end
+
+  test "raise on deserialize when the current type is not the same as the value" do
+    context = mock_current_shop_id(1)
+
+    type = ActiveRecord::FirewalledIDType.new("Blog", "shop", context)
+
+    assert_raise ActiveRecord::FirewalledIDType::FirewalledAccess do
+      type.deserialize(2)
+    end
+  end
+
   private
 
   def mock_current_shop_id(id)
