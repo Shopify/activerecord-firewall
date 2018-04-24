@@ -1,11 +1,12 @@
 module ActiveRecord
-  class FirewalledIDType < ActiveRecord::Type::Integer
+  class FirewalledIDType < ActiveRecord::Type::BigInteger
     class FirewalledAccess < ActiveRecord::RecordNotFound; end
 
-    def initialize(model, protected_type)
+    def initialize(model, protected_type, source)
       super()
       @model = model
       @protected_type = protected_type.to_sym
+      @source = source
     end
 
     def deserialize(*)
@@ -14,19 +15,22 @@ module ActiveRecord
       end
     end
 
-    def serialize(*)
+    private
+
+    def cast_value(*)
       super.tap do |id|
         check_attribute!(id)
       end
     end
 
     def check_attribute!(id)
-      current = ActiveSupport::CurrentAttributes.subclasses.first.send(@protected_type)
+      current = @source.public_send(@protected_type)
       humanized_protected_type = @protected_type.to_s.humanize
-      if current&.id && id && current.id != id
+      current_id = current&.id
+      if current_id && id && current_id != id
         message = <<~END.gsub("\n", " ")
         #{@model || 'Record'} from #{humanized_protected_type}
-        #{id} was accessed from #{humanized_protected_type} #{current&.id}
+        #{id} was accessed from #{humanized_protected_type} #{current_id}
         END
 
         raise FirewalledAccess, message

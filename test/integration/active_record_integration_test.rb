@@ -1,9 +1,7 @@
 require 'test_helper'
 
-class BlogPostTest < ActiveSupport::TestCase
+class ActiveRecordIntegrationTest < ActiveSupport::TestCase
   setup do
-    # Hack to autoload the current class :(
-    Current
     @goodbob = users(:goodbob)
     @evilbob = users(:evilbob)
 
