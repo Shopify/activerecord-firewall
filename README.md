@@ -12,23 +12,6 @@ that if you call `firewalled_belongs_to :shop` in the `Product` model, you will 
 object is loaded from the database to ensure that the associated `Shop` object
 has the ID of the current shop.
 
-## Installation
-Add this line to your application's Gemfile:
-
-```ruby
-gem 'activerecord-firewall'
-```
-
-And then execute:
-```bash
-$ bundle
-```
-
-Or install it yourself as:
-```bash
-$ gem install activerecord-firewall
-```
-
 ## Contributing
 Contribution directions go here.
 
