@@ -2,8 +2,6 @@ require 'test_helper'
 
 class ImageTest < ActiveSupport::TestCase
   setup do
-    # Hack to autoload the current class :(
-    Current
     @goodbob = users(:goodbob)
     @evilbob = users(:evilbob)
 
