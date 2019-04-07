@@ -2,10 +2,11 @@ module ActiveRecord
   class FirewalledIDType < ActiveRecord::Type::BigInteger
     class FirewalledAccess < ActiveRecord::RecordNotFound; end
 
-    def initialize(model, protected_type, source)
+    def initialize(model, protected_type, source, report_only: false)
       super()
       @model = model
       @protected_type = protected_type.to_sym
+      @report_only = report_only
       @source = source
     end
 
@@ -33,7 +34,11 @@ module ActiveRecord
         #{id} was accessed from #{humanized_protected_type} #{current_id}
         END
 
-        raise FirewalledAccess, message
+        if @report_only
+          Rails.logger.info "[activerecord-firewall] #{message}"
+        else
+          raise FirewalledAccess, message
+        end
       end
     end
   end

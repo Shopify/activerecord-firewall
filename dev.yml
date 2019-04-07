@@ -20,4 +20,4 @@ commands:
     syntax:
       argument: file
       optional: args...
-    run: bin/testunit
+    run: bin/test
