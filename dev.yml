@@ -3,10 +3,7 @@ name: activerecord-firewall
 type: ruby
 
 up:
-  - homebrew:
-    - openssl
-    # - another_package
-  - ruby: 2.4.2
+  - ruby: 2.6.6
   - bundler
 
 commands:
